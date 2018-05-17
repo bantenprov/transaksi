@@ -11,3 +11,9 @@
 [![Daily Downloads](https://poser.pugx.org/bantenprov/transaksi/d/daily)](https://packagist.org/packages/bantenprov/transaksi)
 
 Transaksi
+
+### Install via composer 
+
+```bash
+composer require bantenprov/transaksi:dev-master
+```
