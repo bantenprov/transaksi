@@ -13,8 +13,5 @@ use Bantenprov\Transaksi\Models\TransaksiModel;
  */
 class TransaksiController extends Controller
 {
-    public function demo()
-    {
-        return Transaksi::welcome();
-    }
+    // your code..
 }

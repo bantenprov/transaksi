@@ -1,6 +1,7 @@
 <?php namespace Bantenprov\Transaksi\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * The TransaksiModel class.
@@ -10,24 +11,42 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TransaksiModel extends Model
 {
+    use SoftDeletes;
+
     /**
     * Table name.
     *
     * @var string
     */
-    protected $table = 'transaksi';
+    protected $table = 'transaksies';
 
-    /**
-    * The attributes that are mass assignable.
-    *
-    * @var mixed
-    */
-    protected $fillable = [];
+    protected $fillable = [
+        'uuid',
+        'nomor',
+        'total',
+        'denda',
+        'potongan',
+        'grandtotal',
+        'admin_id',
+        'customer_transaksi_id',
+        'tarif_id',
+        'admin_uuid',
+        'customer_transaksi_uuid',
+        'tarif_uuid'
+    ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [];
+    // public function getitem()
+    // {
+    //     return $this->hasMany('Item', 'id');
+    // }
+
+    public function getCustomer()
+    {
+        return $this->hasOne('Bantenprov\CustomerRetribusi\Models\CustomerRetribusiModel', 'id');
+    }
+
+    public function getAdmin()
+    {
+        return $this->hasOne('Bantenprov\Admin\Models\AdminModel', 'id');
+    }
 }
